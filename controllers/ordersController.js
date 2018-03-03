@@ -1,9 +1,9 @@
-const Product = ('../models/product');
-const Order = ('../models/order');
+const Product = require('../models/product');
+const Order = require('../models/order');
 
 
 function getAllProducts(req, res){
-  Product.find({}, (err,products) => res.json(products))
+  Product.find({}).then((products) => res.json(products))
 };
 
 
