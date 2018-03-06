@@ -12,7 +12,8 @@ class App extends Component {
     super()
     this.state = {
       products: null,
-      search: ''
+      search: '',
+      order: {}
     }
   }
 
@@ -21,8 +22,14 @@ class App extends Component {
     fetch('/api/products').then(data =>
       data.json()).then(data => {
         this.setState({ products: data })
-      })
+      });
+    fetch('/api/order').then(data =>
+      data.json()).then(data => {
+        this.setState({ order: data })
+      });
   }
+
+
 
   render() {
     return (

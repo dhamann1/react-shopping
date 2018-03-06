@@ -14,28 +14,24 @@ const ProductsList = (props) => {
           </tr>
         </thead>
         <tbody>
-            {props.products ? props.products.map(product =>
-          <tr>
-            <td>{product.name}</td>
-            <td>{"$" + product.price.toString()}</td>
-            <td>{product.sku}</td>
-            <td>{product.description}</td> 
-          </tr> 
+          {props.products ? props.products.map(product =>
+            <tr>
+              <td>{product.name}</td>
+              <td>{"$" + product.price.toString()}</td>
+              <td>{product.sku}</td>
+              <td>{product.description}</td>
+            </tr>
           )
-          :
-        <div></div> 
-        }
-        
+            :
+            <div></div>
+          }
         </tbody>
       </table>
-
-
     </div>
+  )
+}
 
-      )
-    }
-    
-    export default ProductsList;
-    
-    
-    
+export default ProductsList;
+
+
+

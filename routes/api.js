@@ -4,6 +4,7 @@ const orderCtrl = require('../controllers/ordersController');
 
 
 router.get('/products', orderCtrl.getAllProducts);
+router.get('/order', orderCtrl.getOrder);
 
 
 module.exports = router; 
