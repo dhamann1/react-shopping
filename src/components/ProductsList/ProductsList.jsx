@@ -20,6 +20,8 @@ const ProductsList = (props) => {
               <td>{"$" + product.price.toString()}</td>
               <td>{product.sku}</td>
               <td>{product.description}</td>
+              <td><button onClick={() => { props.addProduct(product._id, props.order._id) }}>Add Product</button>
+              </td>
             </tr>
           )
             :

@@ -6,7 +6,7 @@ function getAllProducts(req, res){
   Product.find({}).then(products => res.json(products))
 };
 
-function getOrder (req, res){
+function getOrder(req, res){
   Order.findOne({}).populate('products').exec(order => {
     if (order){
       res.json(order);
@@ -21,5 +21,5 @@ function getOrder (req, res){
 
 module.exports = {
   getAllProducts,
-  getOrder
+  getOrder,
 }

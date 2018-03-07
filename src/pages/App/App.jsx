@@ -6,6 +6,8 @@ import {
 } from 'react-router-dom';
 import CataloguePage from '../CataloguePage/CataloguePage';
 import StartPage from '../StartPage/StartPage';
+import STOREAPI from '../../api/storeAPI';
+
 
 class App extends Component {
   constructor() {
@@ -19,15 +21,12 @@ class App extends Component {
 
   //Lifecycle Methods 
   componentDidMount() {
-    fetch('/api/products').then(data =>
-      data.json()).then(data => {
-        this.setState({ products: data })
-      });
-    fetch('/api/order').then(data =>
-      data.json()).then(data => {
-        this.setState({ order: data })
-      });
+    STOREAPI.fetchProductsAndOrder().then(data => {
+      this.setState({products: data[0], order: data[1]});
+    })
   }
+
+
 
 
 
@@ -42,6 +41,7 @@ class App extends Component {
           <Route exact path="/products" render={(props) =>
             <CataloguePage
               products={this.state.products}
+              order={this.state.order}
             />
           }
           />
