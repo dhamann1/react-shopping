@@ -7,6 +7,7 @@ const CataloguePage = (props) => {
       <ProductsList 
       products={props.products}
       order={props.order}
+      addProduct={props.addProduct}
       /> 
     </div>
   )  
