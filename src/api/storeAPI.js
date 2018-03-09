@@ -6,7 +6,7 @@ const STOREAPI = {
   },
 
   addProduct: function (productId, orderId) {
-    let URI = '/api/add-product';
+    let URI = '/api/addproduct';
     return fetch(URI, {
       method: 'POST',
       headers: new Headers({

@@ -22,7 +22,6 @@ class App extends Component {
   addProduct = (productId, orderId) => {
     STOREAPI.addProduct(productId, orderId)
       .then(data => {
-        console.log(data);
         this.setState({ order: data });
       })
   }
@@ -50,7 +49,7 @@ class App extends Component {
             <CataloguePage
               products={this.state.products}
               order={this.state.order}
-              addProduct={this.addProduct} 
+              addProduct={this.addProduct}
             />
           }
           />
