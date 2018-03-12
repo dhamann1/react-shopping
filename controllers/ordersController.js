@@ -18,25 +18,33 @@ function getOrder(req, res) {
   });
 }
 
+
 function addProduct(req, res) {
+  console.log(req.body);
   Product.findById(req.body.productId, (err, product) => {
     if (err) {
       console.log(err);
     } else {
       Order.findById(req.body.orderId, (err, order) => {
-        order.products.push({
-          product: product._id
-        });
+        if (err){
+          console.log(err)} 
+        order.products.push({product: product._id});
         order.save((err) => {
+          if (err) {
+            return res.json(500, {
+              error: 'Cannot save the order.'
+            })
+          }
           order.populate('products.product', (err, order) => {
-            console.log(order);
-            res.json(order);
-          });
+              res.json(order);
+            });
         });
       });
     }
   });
 }
+
+
 module.exports = {
   getAllProducts,
   getOrder,

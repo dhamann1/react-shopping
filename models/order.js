@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const orderSchema = new Schema ({
   products: [{
-    type: Schema.Types.ObjectId, Ref: "Product"
+    product: {type: Schema.Types.ObjectId, Ref: 'Product'}
   }]
 });
 
