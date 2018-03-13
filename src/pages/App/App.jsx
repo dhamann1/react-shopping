@@ -26,6 +26,13 @@ class App extends Component {
       })
   }
 
+  removeProduct = (productId, orderId) => {
+    STOREAPI.removeProduct(productId, orderId)
+      .then(data => {
+        this.setState({ order: data });
+      })
+  }
+
   //Lifecycle Methods 
   componentDidMount() {
     STOREAPI.fetchProductsAndOrder().then(data => {
@@ -50,6 +57,7 @@ class App extends Component {
               products={this.state.products}
               order={this.state.order}
               addProduct={this.addProduct}
+              removeProduct={this.removeProduct}
             />
           }
           />

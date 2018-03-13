@@ -19,6 +19,22 @@ const STOREAPI = {
     }).then(data => {
       data.json();
     });
+  },
+
+  removeProduct: function (productId, orderId) {
+    let URI = '/api/removeproduct';
+    return fetch(URI, {
+      method: 'POST',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify({
+        productId,
+        orderId
+      })
+    }).then(data => {
+      data.json();
+    });
   }
 }
 
