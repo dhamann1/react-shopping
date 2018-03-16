@@ -19,6 +19,12 @@ class App extends Component {
     }
   }
 
+  //Event Listeners
+
+  updateSearch = (evt) => {
+    this.setState({search: evt.target.value})
+  }
+
   addProduct = (productId, orderId) => {
     STOREAPI.addProduct(productId, orderId)
       .then(data => {
@@ -56,8 +62,10 @@ class App extends Component {
             <CataloguePage
               products={this.state.products}
               order={this.state.order}
+              search={this.state.search}
               addProduct={this.addProduct}
               removeProduct={this.removeProduct}
+              updateSearch={this.updateSearch}
             />
           }
           />
