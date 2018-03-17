@@ -2,6 +2,7 @@ import React from 'react';
 
 
 const ProductsList = (props) => {
+  let updatedProducts = props.products.filter(product => product.name.includes(props.search.toLowerCase()));
   return (
     <div>
       <table>
@@ -14,7 +15,7 @@ const ProductsList = (props) => {
           </tr>
         </thead>
         <tbody>
-          {props.products ? props.products.map(product =>
+          {updatedProducts.map(product =>
             <tr>
               <td>{product.name}</td>
               <td>{"$" + product.price.toString()}</td>
@@ -22,11 +23,7 @@ const ProductsList = (props) => {
               <td>{product.description}</td>
               <td><button onClick={() => { props.addProduct(product._id, props.order._id) }}>Add Product</button></td>
               <td><button onClick={() => { props.removeProduct(product._id, props.order._id) }}>Remove Product</button></td>
-            </tr>
-          )
-            :
-            <div></div>
-          }
+            </tr>)}
         </tbody>
       </table>
     </div>

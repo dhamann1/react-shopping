@@ -2,7 +2,7 @@ import React from 'react';
 
 const SearchForm = (props) => {
   return (
-    <div class="col-xs-6 col-xs-offset-6">
+    <div class="col-xs-6">
       <div class="input-group">
         <input
           type="text"
