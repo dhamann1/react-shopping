@@ -45,8 +45,21 @@ function addProduct(req, res) {
 }
 
 
+function removeProduct(req, res) {
+  Order.findById(req.body.orderId, (err, order) => {
+    let productIndex = order.products.findIndex(product => product.product.toString() === req.body.productId.toString());   
+    order.save((err) => {
+      order.populate('products.product', (err, order) => {
+          res.json(order);
+        });
+    });
+  })
+}
+
+
 module.exports = {
   getAllProducts,
   getOrder,
-  addProduct
+  addProduct,
+  removeProduct
 }
