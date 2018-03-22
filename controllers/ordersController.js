@@ -20,7 +20,6 @@ function getOrder(req, res) {
 
 
 function addProduct(req, res) {
-  console.log(req.body);
   Product.findById(req.body.productId, (err, product) => {
     if (err) {
       console.log(err);

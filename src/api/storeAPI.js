@@ -17,7 +17,7 @@ const STOREAPI = {
         orderId
       })
     }).then(data => {
-      data.json();
+      return data.json(); 
     });
   },
 
@@ -33,7 +33,7 @@ const STOREAPI = {
         orderId
       })
     }).then(data => {
-      data.json();
+      return data.json();
     });
   }
 }

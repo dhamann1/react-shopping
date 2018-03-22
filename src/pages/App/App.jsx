@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import CataloguePage from '../CataloguePage/CataloguePage';
 import StartPage from '../StartPage/StartPage';
+import CartPage from '../CartPage/CartPage';
 import STOREAPI from '../../api/storeAPI';
 
 
@@ -66,6 +67,15 @@ class App extends Component {
               addProduct={this.addProduct}
               removeProduct={this.removeProduct}
               updateSearch={this.updateSearch}
+            />
+          }
+          />
+          <Route exact path="/cart" render={(props) =>
+            <CartPage
+              products={this.state.products}
+              order={this.state.order}
+              addProduct={this.addProduct}
+              removeProduct={this.removeProduct}
             />
           }
           />
