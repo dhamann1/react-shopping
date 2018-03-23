@@ -72,10 +72,7 @@ class App extends Component {
           />
           <Route exact path="/cart" render={(props) =>
             <CartPage
-              products={this.state.products}
               order={this.state.order}
-              addProduct={this.addProduct}
-              removeProduct={this.removeProduct}
             />
           }
           />

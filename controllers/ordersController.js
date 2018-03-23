@@ -25,9 +25,15 @@ function addProduct(req, res) {
       console.log(err);
     } else {
       Order.findById(req.body.orderId, (err, order) => {
-        if (err){
-          console.log(err)} 
-        order.products.push({product: product._id});
+        let productIndex = order.products.findIndex(cartProduct => cartProduct.product.toString() === product._id.toString());
+        if (productIndex !== -1) {
+          order.products[productIndex].quantity += 1;
+        } else {
+          order.products.push({
+            product: product._id,
+            quantity: 1
+          });
+        }
         order.save((err) => {
           if (err) {
             return res.json(500, {
@@ -35,8 +41,8 @@ function addProduct(req, res) {
             })
           }
           order.populate('products.product', (err, order) => {
-              res.json(order);
-            });
+            res.json(order);
+          });
         });
       });
     }
@@ -46,11 +52,10 @@ function addProduct(req, res) {
 
 function removeProduct(req, res) {
   Order.findById(req.body.orderId, (err, order) => {
-    let productIndex = order.products.findIndex(product => product.product.toString() === req.body.productId.toString());   
     order.save((err) => {
       order.populate('products.product', (err, order) => {
-          res.json(order);
-        });
+        res.json(order);
+      });
     });
   })
 }
