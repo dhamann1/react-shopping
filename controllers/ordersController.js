@@ -52,13 +52,25 @@ function addProduct(req, res) {
 
 function removeProduct(req, res) {
   Order.findById(req.body.orderId, (err, order) => {
+    let productIndex = order.products.findIndex(cartProduct => cartProduct.product.toString() === product._id.toString());
+    if (productIndex > 1) {
+      order.products[productIndex].quantity -= 1;
+    } else {
+      order.products.splice(productIndex, 1)
+    }
     order.save((err) => {
+      if (err) {
+        return res.json(500, {
+          error: 'Cannot save the order.'
+        })
+      }
       order.populate('products.product', (err, order) => {
         res.json(order);
       });
     });
-  })
+  });
 }
+
 
 
 module.exports = {
