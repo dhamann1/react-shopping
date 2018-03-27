@@ -1,11 +1,12 @@
 import React from 'react';
+import {Grid, Table} from 'react-bootstrap';
 
 
 const ProductsList = (props) => {
   let updatedProducts = props.products.filter(product => product.name.includes(props.search.toLowerCase()));
   return (
-    <div>
-      <table>
+    <Grid fluid > 
+      <Table bordered responsive hover>
         <thead>
           <tr>
             <th>Name</th>
@@ -25,8 +26,8 @@ const ProductsList = (props) => {
               <td><button onClick={() => { props.removeProduct(product._id, props.order._id) }}>Remove Product</button></td>
             </tr>)}
         </tbody>
-      </table>
-    </div>
+      </Table>
+    </Grid>
   )
 }
 
