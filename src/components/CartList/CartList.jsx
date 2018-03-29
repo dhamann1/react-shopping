@@ -1,10 +1,11 @@
 import React from 'react';
+import {Grid, Table} from 'react-bootstrap';
 
 const CartPage = (props) => {
   return (
-    <div>
-         <div>
-      <table>
+    <Grid fluid >
+ 
+      <Table bordered responsive hover>
         <thead>
           <tr>
             <th>ID</th>
@@ -18,9 +19,8 @@ const CartPage = (props) => {
               <td>{product.quantity}</td>
             </tr>)}
         </tbody>
-      </table>
-    </div>
-    </div>
+      </Table>
+    </Grid>
   )
 }
 

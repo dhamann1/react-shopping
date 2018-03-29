@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Table} from 'react-bootstrap';
+import {Grid, Table, Button} from 'react-bootstrap';
 
 
 const ProductsList = (props) => {
@@ -22,8 +22,8 @@ const ProductsList = (props) => {
               <td>{"$" + product.price.toString()}</td>
               <td>{product.sku}</td>
               <td>{product.description}</td>
-              <td><button onClick={() => { props.addProduct(product._id, props.order._id) }}>Add Product</button></td>
-              <td><button onClick={() => { props.removeProduct(product._id, props.order._id) }}>Remove Product</button></td>
+              <td><Button bsStyle="primary" onClick={() => { props.addProduct(product._id, props.order._id) }}>Add Product</Button></td>
+              <td><Button bsStyle="danger" onClick={() => { props.removeProduct(product._id, props.order._id) }}>Remove Product</Button></td>
             </tr>)}
         </tbody>
       </Table>
