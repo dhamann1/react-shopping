@@ -52,7 +52,10 @@ function addProduct(req, res) {
 
 function removeProduct(req, res) {
   Order.findById(req.body.orderId, (err, order) => {
-    let productIndex = order.products.findIndex(cartProduct => cartProduct.product.toString() === product._id.toString());
+    if (err){
+      console.log(err);
+    } else {
+    let productIndex = order.products.findIndex(cartProduct => cartProduct.product.toString() === req.body.productId.toString());
     if (productIndex > 1) {
       order.products[productIndex].quantity -= 1;
     } else {
@@ -68,6 +71,7 @@ function removeProduct(req, res) {
         res.json(order);
       });
     });
+  }
   });
 }
 
